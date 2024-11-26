@@ -171,6 +171,9 @@ if (isset($_GET['post_id'])) {
            onclick="return confirm('정말 삭제하시겠습니까?');">
             <i class="bi bi-trash"></i>
         </a>
+        <a href="input.php" class="btn btn-success me-2">
+            <i class="bi bi-pencil-square"></i>
+        </a>
         <a href="index.php" class="btn btn-secondary">
             <i class="bi bi-list-ul"></i>
         </a>
