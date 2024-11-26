@@ -1,9 +1,11 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
 * {
-    font-family: Pretendard, 'sans-serif' !important;
+    font-family: Pretendard, 'sans-serif';
 }
-
+.ck-editor__editable {
+    font-family: inherit !important;
+}
 
 .btn-square {
     width: 50px;

@@ -7,16 +7,9 @@
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cumtom.css" rel="stylesheet">
-    <style>
-        .main-container {
-            width: 795px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 <body>
-<div class="main-container mt-5">
+<div class="container mt-5">
     <h1 class="text-center mb-4">새 게시물 작성</h1>
     <form method="POST" action="input_process.php" enctype="multipart/form-data">
         <div class="mb-3">
@@ -73,10 +66,25 @@
             toolbar: [
                 'undo', 'redo', '|', 'bold', 'italic', '|',
                 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
+            ],
+            fontFamily: {
+                options: [
+                    'default',
+                    'Pretendard, sans-serif',
+                    'Arial, Helvetica, sans-serif',
+                    'Courier New, Courier, monospace',
+                    'Georgia, serif',
+                    'Tahoma, Geneva, sans-serif',
+                    'Times New Roman, Times, serif',
+                    'Verdana, Geneva, sans-serif'
+                ],
+                supportAllValues: true // 모든 사용자 정의 값을 허용
+            }
         } )
         .then( editor => {
             window.editor = editor;
+
+            // 폼 전송 시 에디터 데이터를 textarea에 복사
             document.querySelector('form').addEventListener('submit', (event) => {
                 document.querySelector('#content').value = editor.getData();
             });
