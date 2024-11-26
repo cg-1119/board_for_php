@@ -37,6 +37,7 @@
         <div class="mb-3">
             <label for="attachment" class="form-label">파일 첨부</label>
             <input type="file" id="attachment" name="attachment" class="form-control">
+            <small class="text-danger d-none" id="fileError">한글이나 공백이 포함된 파일은 업로드할 수 없습니다.</small>
         </div>
 
         <button type="submit" class="btn btn-success">작성하기</button>
@@ -92,6 +93,21 @@
         .catch( error => {
             console.error( error );
         } );
+</script>
+<script>
+    document.getElementById('attachment').addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const fileName = file.name;
+            const invalidCharacters = /[\u3131-\uD79D\s]/; // 한글 및 공백 정규식
+            if (invalidCharacters.test(fileName)) {
+                document.getElementById('fileError').classList.remove('d-none');
+                this.value = ''; // 파일 입력 초기화
+            } else {
+                document.getElementById('fileError').classList.add('d-none');
+            }
+        }
+    });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
